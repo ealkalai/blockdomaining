@@ -45,6 +45,11 @@ def valid_login(username, password):
 def registrar1():
     return render_template('registrar1.html')
 
+@application.route("/search", methods=['POST'])
+def search():
+    domains = ["domain1", "domain2", "domain3"]
+    return render_template('listDomains.html', domains=domains)
+
 
 
 if __name__ == "__main__":
