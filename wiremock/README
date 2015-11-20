@@ -1,0 +1,6 @@
+End Points:
+
+GET /api/helloworld
+
+POST /registrar1/search
+curl -X POST -d "{query:jpanneel.be}" localhost:8090/registrar1/search
