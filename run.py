@@ -3,7 +3,7 @@ application = Flask(__name__)
 
 @application.route("/")
 def hello():
-    return render_template('layout.html')
+    return render_template('layout.html',variable="This is a variable")
 
 @application.route("/antigoni")
 def antigoni():
