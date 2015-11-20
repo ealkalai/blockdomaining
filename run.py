@@ -4,13 +4,15 @@ from app import app
 application = Flask(__name__)
 
 
-from flask.ext.wtf import Form, validators
+from flask.ext.wtf import Form
+from wtforms.fields import TextField, PasswordField
+#from wtforms.validators import Required
 from app.models import User
 
 
 class LoginForm(Form):
-    username = TextField('Username', [validators.Required()])
-    password = PasswordField('Password', [validators.Required()])
+    username = TextField('Username')
+    password = PasswordField('Password')
 
     def __init__(self, *args, **kwargs):
         Form.__init__(self, *args, **kwargs)
