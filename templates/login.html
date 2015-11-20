@@ -1,0 +1,14 @@
+<html>
+{% if error is defined %}
+    <p>There was an error logging in! try again!</p>
+{% endif %}
+<form action="/login" method="post">
+  username:<br>
+  <input type="text" name="username">
+  <br>
+  password:<br>
+  <input type="text" name="password">
+  <br>
+  <input type="submit" value="Submit">
+</form>
+</html>

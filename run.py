@@ -25,5 +25,19 @@ def erikos():
 def maryna():
     return "Hello Maryna"
 
+@application.route("/login", methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if valid_login(request.form['username'],
+                       request.form['password']):
+        	return render_template('loggedIn.html', username=request.form['username'])
+        else:
+            error = 'Invalid username/password'
+    return render_template('login.html', error=error)
+
+def valid_login(username, password):
+	return username == "username" and password == "password"
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
