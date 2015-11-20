@@ -1,0 +1,16 @@
+{
+    "request": {
+        "method": "POST",
+        "url": "/registrar1/search",
+	"bodyPatterns" : [
+            { "equalToJson" : "{ \"query\": \"jpanneel.be\" }", "jsonCompareMode": "LENIENT" }
+        ]
+    },
+    "response": {
+        "status": 200,
+        "bodyFileName": "search_jpanneel.json",
+        "headers": {
+            "Content-Type": "text/json"
+        }
+    }
+}
