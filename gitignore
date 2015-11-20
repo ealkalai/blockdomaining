@@ -8,3 +8,6 @@ Session.vim
 .netrwhist
 *~
 
+### wiremock jar ###
+wiremock/wiremock.jar
+
