@@ -1,4 +1,5 @@
 from app import db
+from sqlalchemy.sql import func
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -33,13 +34,15 @@ class Contract(db.Model):
 
     price           = db.Column(db.DECIMAL(5,2))
 
-    date_init       = db.Column(db.DateTime)
+    date_init       = db.Column(db.DateTime, default=func.now() )
     date_closure    = db.Column(db.DateTime)
     registrar_email = db.Column(db.String(200))
 
 
-    def __init__(self, domain):
+    def __init__(self, domain, buyer_name, buyer_email):
         self.domain = domain
+        self.buyer_name = buyer_name
+        self.buyer_email = buyer_email
 
     def __repr__(self):
         return "Contract ID: %s" % self.id_c

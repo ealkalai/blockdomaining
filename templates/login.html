@@ -1,4 +1,10 @@
 <html>
+{% if username is defined %}
+<html>
+<p>thank you for loggin in {{ username }} </p>
+<a href="/add_contract">Create a contract</a>
+</html>
+{% else %}
 {% if error is not sameas None %}
     <p>Error: {{error}} try again!</p>
 {% endif %}
@@ -12,4 +18,5 @@
   <br>
   <input type="submit" value="Submit">
 </form>
+{% endif %}
 </html>
