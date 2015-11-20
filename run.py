@@ -1,5 +1,7 @@
 from flask import Flask, request, render_template
 from app import app, db
+from __security import *
+from flask_login import LoginManager
 
 application = Flask(__name__)
 
@@ -13,6 +15,9 @@ def hello():
 def login():
     error = None
     if request.method == 'POST':
+        user = load_user_from_request(request)
+        if user:
+            login_user(user)
         if valid_login(request.form['username'],
                        request.form['password']):
         	return render_template('login.html', username=request.form['username'])
