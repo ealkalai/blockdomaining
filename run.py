@@ -5,7 +5,7 @@ from flask_login import LoginManager
 
 application = Flask(__name__)
 
-from app.models import User, Contract
+from app.models import User, Contract, Domain
 
 @application.route("/")
 def hello():
@@ -27,6 +27,9 @@ def login():
 
 def valid_login(username, password):
     user = User.query.filter_by(username=username).first()
+
+    if user == None:
+        return False
 
     if user.password == password:
         return True
@@ -76,7 +79,11 @@ def registrar1():
 
 @application.route("/search", methods=['POST'])
 def search():
-    domains = ["domain1", "domain2", "domain3"]
+    d1 = Domain("domain1")
+    d2 = Domain("domain2")
+    d3 = Domain("domain3")
+
+    domains = [d1, d2, d3]
     return render_template('listDomains.html', domains=domains)
 
 
