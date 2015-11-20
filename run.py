@@ -39,5 +39,11 @@ def login():
 def valid_login(username, password):
 	return username == "username" and password == "password"
 
+@application.route("/registrar1")
+def registrar1():
+    return render_template('registrar1.html')
+
+
+
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
