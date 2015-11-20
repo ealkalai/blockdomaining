@@ -11,3 +11,5 @@ Session.vim
 ### wiremock jar ###
 wiremock/wiremock.jar
 .idea/
+
+*.pyc
