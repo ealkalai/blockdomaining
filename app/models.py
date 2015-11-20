@@ -21,8 +21,21 @@ class Contract(db.Model):
     __tablename__ = 'contracts'
     extend_existing=True
 
-    id_c = db.Column(db.Integer, primary_key = True)
-    domain = db.Column(db.String(200))
+    id_c            = db.Column(db.Integer, primary_key = True)
+
+    domain          = db.Column(db.String(200))
+
+    buyer_name      = db.Column(db.String(200))
+    buyer_email     = db.Column(db.String(200))
+    seller_name     = db.Column(db.String(200))
+    seller_email    = db.Column(db.String(200))
+
+    price           = db.Column(db.DECIMAL(5,2))
+
+    date_init       = db.Column(db.DateTime)
+    date_closure    = db.Column(db.DateTime)
+    registrar_email = db.Column(db.String(200))
+
 
     def __init__(self, domain):
         self.domain = domain
