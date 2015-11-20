@@ -42,4 +42,31 @@ class Contract(db.Model):
         self.domain = domain
 
     def __repr__(self):
-        return "Domain in contract: %s" % self.domain
+        return "Contract ID: %s" % self.id_c
+
+
+class Domain(db.Model):
+    id_d = db.Column(db.Integer, primary_key = True)
+
+    name = db.Column(db.String(200))
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return "Domain name: %s" % self.domain
+
+
+class Registrar(db.Model):
+    id_r = db.Column(db.Integer, primary_key = True)
+
+    name = db.Column(db.String(200))
+
+    def __init__(self, name):
+        self.name = name
+
+    def __repr__(self):
+        return "Registrar name: %s" % self.domain
+
+
+
