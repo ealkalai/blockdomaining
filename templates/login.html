@@ -1,7 +1,8 @@
 <html>
-{% if error is defined %}
-    <p>There was an error logging in! try again!</p>
+{% if error is not sameas None %}
+    <p>Error: {{error}} try again!</p>
 {% endif %}
+
 <form action="/login" method="post">
   username:<br>
   <input type="text" name="username">

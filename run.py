@@ -33,7 +33,7 @@ def login():
                        request.form['password']):
         	return render_template('loggedIn.html', username=request.form['username'])
         else:
-            error = 'Invalid username/password'
+            error = 'Invalid username/password.'
     return render_template('login.html', error=error)
 
 def valid_login(username, password):
