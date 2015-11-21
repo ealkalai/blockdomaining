@@ -15,7 +15,7 @@ def login():
     if request.method == 'POST':
         if valid_login(request.form['username'],
                        request.form['password']):
-            return render_template('login.html', username=request.form['username'])
+            return render_template('login.html', username=request.form['username'], callback=request.args.get('callback'))
         else:
             error = 'Invalid username/password.'
     return render_template('login.html', error=error)

@@ -3,7 +3,7 @@
 
 <ul>
 {% for domain in domains -%}
-    <li>{{ domain.name }} <a href="/login?domain={{ domain.name }}">buy</a></li>
+    <li>{{ domain.name }} <a href="/login?callback=http://localhost:5000/registrar1/buy/{{ domain.name }}">buy</a></li>
 {%- endfor %}
 </ul>
 </html>
