@@ -13,6 +13,10 @@ def hello():
 def thanks1():
     return render_template('thanks2buyer.html')
 
+@application.route("/thanks2seller")
+def thanks2():
+    return render_template('thanks2seller.html')
+
 @application.route("/login", methods=['GET', 'POST'])
 def login():
     error = None
