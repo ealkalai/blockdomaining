@@ -8,7 +8,7 @@ from app.models import User, Contract, Domain
 
 @application.route("/thanks2buyer")
 def thanks1():
-    return render_template('thanks2buyer.html', name="Koen")
+    return render_template('thanks2buyer.html', name="Julian")
 
 @application.route("/thanks2seller")
 def thanks2():
@@ -86,10 +86,11 @@ def search():
 
 @application.route("/commonapi/me")
 def me():
-    return "{id: 3, name: Koen}"
+    return "{id: 3, name: Julian}"
 
 @application.route("/registrar1/token/<token>")
 def setToken(token):
+    #should do a get to /commonapi/me
     return redirect(url_for('thanks1'))
 
 @application.route("/expense_dashboard/")
