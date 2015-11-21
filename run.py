@@ -9,6 +9,10 @@ from app.models import User, Contract, Domain
 def hello():
     return render_template('layout.html',variable="This is a variable")
 
+@application.route("/thanks2buyer")
+def thanks1():
+    return render_template('thanks2buyer.html')
+
 @application.route("/login", methods=['GET', 'POST'])
 def login():
     error = None
@@ -72,13 +76,13 @@ def update_contract():
 def registrar1():
     return render_template('registrar1.html')
 
+@application.route("/listDomains")
+def listDomains():
+    return render_template('listDomains.html', domains=["google.com", "ing.nl", "ing.com", "youtube.com"])
+
 @application.route("/search", methods=['POST'])
 def search():
-    d1 = Domain("domain1")
-    d2 = Domain("domain2")
-    d3 = Domain("domain3")
-
-    domains = [d1, d2, d3]
+    domains = ["google.com", "ing.nl", "ing.com", "youtube.com"]
     return render_template('listDomains.html', domains=domains)
 
 
