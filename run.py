@@ -3,7 +3,7 @@ from app import app, db
 
 application = Flask(__name__)
 
-from app.models import User, Contract
+from app.models import User, Contract, Domain
 
 @application.route("/")
 def hello():
@@ -19,13 +19,16 @@ def login():
     if request.method == 'POST':
         if valid_login(request.form['username'],
                        request.form['password']):
-        	return render_template('login.html', username=request.form['username'])
+            return render_template('login.html', username=request.form['username'])
         else:
             error = 'Invalid username/password.'
     return render_template('login.html', error=error)
 
 def valid_login(username, password):
     user = User.query.filter_by(username=username).first()
+
+    if user == None:
+        return False
 
     if user.password == password:
         return True
