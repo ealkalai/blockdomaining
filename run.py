@@ -1,6 +1,9 @@
 from flask import Flask, request, render_template, redirect, url_for
 from app import app, db
 
+import string
+import random
+
 application = Flask(__name__)
 
 from app.models import User, Contract, Domain
@@ -8,14 +11,17 @@ from app.models import User, Contract, Domain
 
 @application.route("/thanks2buyer")
 def thanks1():
+    print(rand(800))
     return render_template('thanks2buyer.html', name="Julian")
 
 @application.route("/thanks2seller")
 def thanks2():
+    print(rand(950))
     return render_template('thanks2seller.html')
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
+    print(rand(800))
     error = None
     if request.method == 'POST':
         if valid_login(request.form['username'],
@@ -73,16 +79,19 @@ def update_contract():
 
 @application.route("/registrar1")
 def registrar1():
+    print(rand(900))
     return render_template('registrar1.html')
 
 @application.route("/listDomains")
 def listDomains():
+    print(rand(900))
     return render_template('listDomains.html', domains=["google.com", "ing.nl", "ing.com", "youtube.com"])
 
 @application.route("/search", methods=['POST'])
 def search():
+    print(rand(1000))
     domains = ["google.com", "ing.nl", "ing.com", "youtube.com"]
-    return render_template('listDomains.html', domain=Domain("ing.nl"))
+    return render_template('listDomains.html', domain="ing.com")
 
 @application.route("/commonapi/me")
 def me():
@@ -90,6 +99,7 @@ def me():
 
 @application.route("/registrar1/token/<token>")
 def setToken(token):
+    print(rand(600))
     #should do a get to /commonapi/me
     return redirect(url_for('thanks1'))
 
@@ -99,6 +109,9 @@ def excess():
                     var token = window.location.href.split("access_token=")[1].split("&state=")[0]; 
                     window.location = "http://localhost:5000/registrar1/token/" + token;
                 </script> '''
+
+def rand(N):
+    return ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(N))
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
