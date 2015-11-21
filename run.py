@@ -10,6 +10,10 @@ from app.models import User, Contract, Domain
 def thanks1():
     return render_template('thanks2buyer.html', name="Koen")
 
+@application.route("/thanks2seller")
+def thanks2():
+    return render_template('thanks2seller.html')
+
 @application.route("/login", methods=['GET', 'POST'])
 def login():
     error = None
