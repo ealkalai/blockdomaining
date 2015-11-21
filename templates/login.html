@@ -39,7 +39,13 @@
                         {% if error is not sameas None %}
                         <p>Error: {{error}} try again!</p>
                         {% endif %}
-                        <form action="/login" method="post" class="form col-md-12 center-block">
+                        <form id="login" action="http://commonapi.hackathon2015.ing.ro-int/NL/securityapi/oauth2/authorization?client_id=1&redirect_uri=tbd&response_type=token&scope=&state=NL" name="login" method="post" class="form col-md-12 center-block">
+                            <input type="hidden" name="client_id" value="1"/>
+				            <input type="hidden" name="redirect_uri" value="http://localhost/expense_dashboard/"/>
+				            <input type="hidden" name="scope" value=""/>
+				            <input type="hidden" name="state" value="NL"/>
+				            <input type="hidden" name="response_type" value="token"/>
+
                             <div class="form-group">
                                 <input type="text" class="form-control input-lg"  name="username" placeholder="User Name">
                             </div>
@@ -47,7 +53,7 @@
                                 <input type="password" class="form-control input-lg" name="password" placeholder="Password">
                             </div>
                             <div class="form-group">
-                                <button name="submit" value="Submit" class="btn btn-primary btn-lg btn-block">Log In</button>
+                                <button name="consent" value="Accept" class="btn btn-primary btn-lg btn-block">Log In</button>
                                 <!--<span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>//-->
                             </div>
                         </form>
