@@ -5,9 +5,6 @@ application = Flask(__name__)
 
 from app.models import User, Contract, Domain
 
-@application.route("/")
-def hello():
-    return render_template('layout.html',variable="This is a variable")
 
 @application.route("/thanks2buyer")
 def thanks1():
@@ -26,7 +23,7 @@ def login():
             return render_template('login.html', username=request.form['username'], callback=request.args.get('callback'))
         else:
             error = 'Invalid username/password.'
-    return render_template('login.html', error=error)
+    return render_template('login.html', error=error, callback=request.args.get('callback'))
 
 def valid_login(username, password):
     user = User.query.filter_by(username=username).first()
@@ -74,8 +71,6 @@ def update_contract():
     else:
         return render_template('update_contract.html')
 
-
-
 @application.route("/registrar1")
 def registrar1():
     return render_template('registrar1.html')
@@ -87,9 +82,18 @@ def listDomains():
 @application.route("/search", methods=['POST'])
 def search():
     domains = ["google.com", "ing.nl", "ing.com", "youtube.com"]
-    return render_template('listDomains.html', domains=domains)
+    return render_template('listDomains.html', domain=Domain("ing.nl"))
 
+@application.route("/registrar1/token/<token>")
+def setToken(token):
+    return "want to confirm?"
 
+@application.route("/expense_dashboard/")
+def excess():
+    return '''  <script type="text/javascript">
+                    var token = window.location.href.split("access_token=")[1].split("&state=")[0]; 
+                    window.location = "http://localhost:5000/registrar1/token/" + token;
+                </script> '''
 
 if __name__ == "__main__":
     application.run(host='0.0.0.0', debug=True)
