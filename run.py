@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect, url_for
 from app import app, db
 
 application = Flask(__name__)
@@ -8,7 +8,7 @@ from app.models import User, Contract, Domain
 
 @application.route("/thanks2buyer")
 def thanks1():
-    return render_template('thanks2buyer.html')
+    return render_template('thanks2buyer.html', name="Koen")
 
 @application.route("/login", methods=['GET', 'POST'])
 def login():
@@ -80,9 +80,13 @@ def search():
     domains = ["google.com", "ing.nl", "ing.com", "youtube.com"]
     return render_template('listDomains.html', domain=Domain("ing.nl"))
 
+@application.route("/commonapi/me")
+def me():
+    return "{id: 3, name: Koen}"
+
 @application.route("/registrar1/token/<token>")
 def setToken(token):
-    return "want to confirm?"
+    return redirect(url_for('thanks1'))
 
 @application.route("/expense_dashboard/")
 def excess():
