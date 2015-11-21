@@ -40,8 +40,15 @@
 
 	<br><h4>Find your dream domain name!</h4></div><br><br><br><br><br>
 	<div class="search_div">
-		<form>
-			<input type="text" class="search" placeholder="Search..." required>
+		<form action="/listDomains" method="get">
+			<input list="domains" type="text" class="search" placeholder="Search..." required>
+            <datalist id="domains">
+              <option value="ing.nl">
+              <option value="ing.com">
+              <option value="google.com">
+              <option value="youtube.com">
+              <option value="facebook.com">
+            </datalist>
 			<input type="button" class="button" value="Search">
 		</form>
 	</div>
