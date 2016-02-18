@@ -6,7 +6,7 @@ import random
 
 application = Flask(__name__)
 
-from app.models import User, Contract, Domain
+from app.models import User
 
 
 @application.route("/thanks2buyer")
@@ -14,12 +14,22 @@ def thanks1():
     print(rand(800))
     return render_template('thanks2buyer.html', name="Julian")
 
-@application.route("/thanks2seller")
-def thanks2():
-    print(rand(950))
-    return render_template('thanks2seller.html')
+@application.route("/thanks", methods=['GET', 'POST'])
+def thanks():
+    name            = request.form['name']
+    email           = request.form['email']
+    background      = request.form['background']
+    expected_grad   = request.form['grad_date']
+    comment         = request.form['comment']
+    interest        = request.form['interest']
 
-@application.route("/login", methods=['GET', 'POST'])
+    user=User(name,email,background,expected_grad,comment,interest)
+    db.session.add(user)
+    db.session.commit()
+
+    return render_template('thanks.html', name=name)
+
+@application.route("/", methods=['GET', 'POST'])
 def login():
     print(rand(800))
     error = None
